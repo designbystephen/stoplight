@@ -1,0 +1,43 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.stoplight {
+    height: 100vh;
+    width: 100vw;
+    color: #fff;
+    display: flex;
+    align-content: center;
+}
+.stoplight-text {
+    flex-grow: 1;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 22rem;
+    user-select: none;
+    margin: auto;
+    text-shadow: 3px 5px rgba(0,0,0,0.33);
+}
+
+.stoplight--free {
+    background-color: #2ecc71;
+}
+
+.stoplight--waiting {
+    background-color: #f1c40f;
+}
+
+.stoplight--busy {
+    background-color: #c0392b;
+}
