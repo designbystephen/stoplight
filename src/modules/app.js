@@ -1,10 +1,35 @@
 /* globals STOPLIGHT_QUERY STOPLIGHT_TEXT_QUERY CURRENT_STAGE STAGES ANIMATIONS */
+let currentStage = 0;
+
+const ANIMATIONS = [
+    'bounce',
+    'flash',
+    'pulse',
+    'rubberBand',
+    'shakeX',
+    'shakeY',
+    'headShake',
+    'swing',
+    'tada',
+    'wobble',
+    'jello',
+    'heartBeat',
+];
+
+const STAGES = [
+    'free',
+    'waiting',
+    'busy',
+];
+
+const STOPLIGHT_QUERY = '.stoplight';
+const STOPLIGHT_TEXT_QUERY = '.stoplight__text';
 
 const getStoplight = () => document.querySelector(STOPLIGHT_QUERY);
 const getStoplightText = () => document.querySelector(STOPLIGHT_TEXT_QUERY);
 const getStages = () => STAGES;
 const getAnimations = () => ANIMATIONS;
-const getCurrentStage = () => CURRENT_STAGE;
+const getCurrentStage = () => currentStage;
 
 const setStage = (stage) => {
     let nextStage = stage;
@@ -14,7 +39,7 @@ const setStage = (stage) => {
     if(stage >= getStages().length) nextStage = 0;
 
     // set current stage
-    CURRENT_STAGE = nextStage;
+    currentStage = nextStage;
 };
 
 const incrementStage = () => setStage(getCurrentStage() + 1);
@@ -46,7 +71,9 @@ const updateStageContent = () => {
     addRandomAnimation();
 };
 
-const loadStoplight = () => {
+const loadStoplight = (initialStage) => {
+    setStage(initialStage);
+
     getStoplight().addEventListener('click', () => {
         incrementStage();
         updateStageContent();
@@ -55,11 +82,13 @@ const loadStoplight = () => {
     updateStageContent();
 };
 
-
 const openStoplight = (stage) => {
-    setStage(stage);
+    const url = browser.runtime.getURL('stoplight.html');
 
-    return browser.tabs.create({
-        url: "index.html"
-    })
+    browser.tabs.create({
+        url: `${url}?initialStage=${stage}`,
+    }).then(() => {
+        window.close();
+    });
 };
+

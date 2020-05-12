@@ -11,6 +11,11 @@ html,
 body {
     height: 100%;
     overflow: hidden;
+    background-color: #ecf0f1;
+}
+
+a {
+    color: #3498db;
 }
 
 .stoplight {
@@ -30,6 +35,18 @@ body {
     text-shadow: 3px 5px rgba(0,0,0,0.33);
 }
 
+.stoplight__text::after {
+    content: "Click to Change";
+    color: rgba(0,0,0,0.50);
+    font-size: 1.5rem;
+    text-shadow: none;
+    display: block;
+}
+
+.stoplight__text:hover .stoplight__text::after {
+    display: block;
+}
+
 .stoplight--free {
     background-color: #2ecc71;
 }
@@ -42,11 +59,22 @@ body {
     background-color: #c0392b;
 }
 
-.status-selections {
-    padding: 0 24px;
+.popup {
+    padding: 12px 24px;
+    width: 275px;
+}
+.popup__footer {
+    font-size: .82rem;
+    text-align: center;
+    color: rgba(0,0,0,0.66);
 }
 
-.status-selections__button {
+.status__header {
+    color: rgba(0,0,0,0.66);
+    font-size: 1rem;
+}
+
+.status__button {
     border: 0;
     margin: 12px auto;
     padding: 4px 6px;
@@ -54,21 +82,19 @@ body {
     text-align: center;
     display: block;
     border-radius: 3px;
-    font-size: 1.75em;
+    font-size: 1.2rem;
     cursor: pointer;
-    max-width: 400px;
     width: 100%;
-    box-shadow: 0px 2px rgba(0,0,0,0.25);
 }
 
-.status-selections__button--free {
+.status__button--free {
     background-color: #2ecc71;
 }
 
-.status-selections__button--waiting {
+.status__button--waiting {
     background-color: #f1c40f;
 }
 
-.status-selections__button--busy {
+.status__button--busy {
     background-color: #c0392b;   
 }

@@ -28,6 +28,10 @@
       "default_icon": "icon-512.png",
       "default_title": "Stoplight",
       "default_popup": "popup.html"
-    }
+    },
+
+    "web_accessible_resources": [
+        "stoplight.html"
+    ]
   }
   

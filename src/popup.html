@@ -4,36 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stoplight - Pick a Status</title>
-    <link rel="stylesheet" href="modules/app.css" />
-    <script src="modules/background.js"></script>
-    <script src="modules/app.js"></script>
+    <link rel="stylesheet" href="app.css" />
+    <script src="app.js"></script>
 </head>
 <body>
-    <div class="status-selections">
-      <button 
-        type="button" 
-        class="status-selections__button status-selections__button--free" 
-        title="Set status to free"
-        onclick="openStoplight(0)"
-      >
-        Free
-      </button>
-      <button 
-        type="button" 
-        class="status-selections__button status-selections__button--waiting"
-        title="Set status to waiting"
-        onclick="openStoplight(1)"
-      >
-        Waiting
-      </button>
-      <button 
-        type="button"
-        class="status-selections__button status-selections__button--busy" 
-        title="Set status to busy"
-        onclick="openStoplight(2)"
-      >
-        Busy
-      </button>
-    </div>
+  <div class="popup">
+    <main role="main" class="popup__content">
+      <div class="status">
+        <header class="status__header">
+          Select a Status:
+        </header>
+        <div class="status__selections">
+          <button 
+            type="button" 
+            class="status__button status__button--free" 
+            title="Set status to free"
+          >
+            Free
+          </button>
+          <button 
+            type="button" 
+            class="status__button status__button--waiting"
+            title="Set status to waiting"
+          >
+            Waiting
+          </button>
+          <button 
+            type="button"
+            class="status__button status__button--busy" 
+            title="Set status to busy"
+          >
+            Busy
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer role="contentinfo" class="popup__footer">
+      Created by <a href="http://designbystephen.com/?from=stoplight">Stephen Roth (designbystephen)</a>
+    </footer>
+  </div>
+  <script defer src="popup.js" ></script>
 </body>
 </html>
