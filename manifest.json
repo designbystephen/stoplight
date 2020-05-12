@@ -22,15 +22,12 @@
       "512": "icon-512.png"
     },
   
-    "permissions": [
-      "tabs",
-      "browsingData"
-    ],
+    "permissions": [],
   
     "browser_action": {
       "default_icon": "icon-512.png",
       "default_title": "Stoplight",
-      "default_popup": "flambe.html"
+      "default_popup": "popup.html"
     }
   }
   

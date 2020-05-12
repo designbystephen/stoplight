@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoplight - Pick a Status</title>
+    <link rel="stylesheet" href="modules/app.css" />
+    <script src="modules/background.js"></script>
+    <script src="modules/app.js"></script>
+</head>
+<body>
+    <div class="status-selections">
+      <button 
+        type="button" 
+        class="status-selections__button status-selections__button--free" 
+        title="Set status to free"
+        onclick="openStoplight(0)"
+      >
+        Free
+      </button>
+      <button 
+        type="button" 
+        class="status-selections__button status-selections__button--waiting"
+        title="Set status to waiting"
+        onclick="openStoplight(1)"
+      >
+        Waiting
+      </button>
+      <button 
+        type="button"
+        class="status-selections__button status-selections__button--busy" 
+        title="Set status to busy"
+        onclick="openStoplight(2)"
+      >
+        Busy
+      </button>
+    </div>
+</body>
+</html>

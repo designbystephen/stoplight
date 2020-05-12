@@ -1,75 +1,65 @@
-const animations = [
-    'bounce',
-    'flash',
-    'pulse',
-    'rubberBand',
-    'shakeX',
-    'shakeY',
-    'headShake',
-    'swing',
-    'tada',
-    'wobble',
-    'jello',
-    'heartBeat',
-];
+/* globals STOPLIGHT_QUERY STOPLIGHT_TEXT_QUERY CURRENT_STAGE STAGES ANIMATIONS */
 
-const stages = [
-    'free',
-    'waiting',
-    'busy',
-];
-
-let currentStage = 0;
-
-const stopLight = document.querySelector('.stoplight');
-const stopLightText = document.querySelector('.stoplight-text');
+const getStoplight = () => document.querySelector(STOPLIGHT_QUERY);
+const getStoplightText = () => document.querySelector(STOPLIGHT_TEXT_QUERY);
+const getStages = () => STAGES;
+const getAnimations = () => ANIMATIONS;
+const getCurrentStage = () => CURRENT_STAGE;
 
 const setStage = (stage) => {
     let nextStage = stage;
 
     // allow for rollover and cover out of bounds
     if(stage < 0) nextStage = 0;
-    if(stage >= stages.length) nextStage = 0;
+    if(stage >= getStages().length) nextStage = 0;
 
     // set current stage
-    currentStage = nextStage;
-}
+    CURRENT_STAGE = nextStage;
+};
 
-const incrementStage = () => setStage(currentStage + 1);
+const incrementStage = () => setStage(getCurrentStage() + 1);
 
 const stripClassModifiers = () => {
-    stages.forEach(stage => {
-        stopLight.classList.remove(`stoplight--${stage}`);
+    getStages().forEach(stage => {
+        getStoplight().classList.remove(`stoplight--${stage}`);
     });
-    animations.forEach(animation => {
-        stopLightText.classList.remove(`animate__${animation}`);
+    getAnimations().forEach(animation => {
+        getStoplightText().classList.remove(`animate__${animation}`);
     });
-}
+};
 
 const addRandomAnimation = () => {
-    const animationIndex = Math.floor(Math.random()*(animations.length - 0 + 1) + 0);
-    stopLightText.classList.add(`animate__${animations[animationIndex] || animations[0]}`);
-}
+    const animationIndex = Math.floor(Math.random()*(getAnimations().length - 0 + 1) + 0);
+    getStoplightText().classList.add(`animate__${getAnimations()[animationIndex] || getAnimations()[0]}`);
+};
 
 const changeStage = () => {
     stripClassModifiers();
-    stopLight.classList.add(`stoplight--${stages[currentStage]}`);
-}
+    getStoplight().classList.add(`stoplight--${getStages()[getCurrentStage()]}`);
+};
 
-const changeText = () => stopLightText.textContent = stages[currentStage];
+const changeText = () => getStoplightText().textContent = getStages()[getCurrentStage()];
 
 const updateStageContent = () => {
     changeStage();
     changeText();
     addRandomAnimation();
-}
+};
 
-stopLight.addEventListener('click', () => {
-    incrementStage();
-    updateStageContent();
-});
+const loadStoplight = () => {
+    getStoplight().addEventListener('click', () => {
+        incrementStage();
+        updateStageContent();
+    });
 
-(() => {
-    setStage(0);
     updateStageContent();
-})();
+};
+
+
+const openStoplight = (stage) => {
+    setStage(stage);
+
+    return browser.tabs.create({
+        url: "index.html"
+    })
+};

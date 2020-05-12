@@ -9,11 +9,12 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     />
     <link rel="stylesheet" href="modules/app.css" />
-</head>
-<body>
-    <div class="stoplight">
-        <h2 class="stoplight-text animate__animated"></h2>
-    </div>
+    <script src="modules/background.js"></script>
     <script src="modules/app.js"></script>
+</head>
+<body onload="loadStoplight();">
+    <div class="stoplight">
+        <h2 class="stoplight__text animate__animated"></h2>
+    </div>
 </body>
 </html>
